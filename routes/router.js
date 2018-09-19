@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
   return res.sendFile(path.join(__dirname + '/templateLogReg/index.html'));
 });
 
-
+global.userID = 'Bar';
 //POST route for updating data
 router.post('/', function (req, res, next) {
   // confirm that user typed same password twice
@@ -37,7 +37,6 @@ router.post('/', function (req, res, next) {
       } else {
         req.session.userId = user._id;
         return res.redirect('/profile');
-        console.log("SUCCESS")
       }
     });
 
@@ -45,11 +44,13 @@ router.post('/', function (req, res, next) {
     User.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
       if (error || !user) {
         var err = new Error('Wrong email or password.');
-        console.log(err)
+        console.log(err);
         err.status = 401;
         return next(err);
       } else {
         req.session.userId = user._id;
+        global.userID = user._id;
+        console.log("SUCCESS this is the ID ->" + user._id);
         return res.redirect('/profile');
       }
     });
@@ -60,9 +61,12 @@ router.post('/', function (req, res, next) {
   }
 })
 
+
+
 // GET route after registering
 router.get('/profile', function (req, res, next) {
-  User.findById(req.session.userId)
+  console.log("and the Profile ID ->" + global.userID)
+  User.findById(global.userID)
     .exec(function (error, user) {
       if (error) {
         return next(error);
