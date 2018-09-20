@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const User = db.User;
+const News = db.News;
 
 module.exports = {
     authenticate,
@@ -72,5 +73,7 @@ async function update(id, userParam) {
 }
 
 async function _delete(id) {
+    const user = await User.findById(id);
+    await News.remove({ author: user.username })
     await User.findByIdAndRemove(id);
 }
