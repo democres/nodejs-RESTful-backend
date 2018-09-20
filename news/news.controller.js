@@ -3,14 +3,35 @@ const router = express.Router();
 const newsService = require('./news.service');
 
 // routes
+router.post('/searchByTitle', searchByTitle);
+router.post('/searchByAuthor', searchByAuthor);
+router.post('/searchByNewsTags', searchByNewsTags);
 router.post('/createNews', createNews);
-router.get('/', getAll);
+router.get('/:id', getAll);
 router.get('/current', getCurrent);
 router.get('/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
 module.exports = router;
+
+function searchByTitle(req, res, next) {
+    newsService.searchByTitle(req.body.title)
+        .then(news => news ? res.json(news) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function searchByAuthor(req, res, next) {
+    newsService.searchByAuthor(req.body.author)
+        .then(news => news ? res.json(news) : res.sendStatus(404))
+        .catch(err => next(err));
+}
+
+function searchByNewsTags(req, res, next) {
+    newsService.searchByNewsTags(req.body.newsTags)
+        .then(news => news ? res.json(news) : res.sendStatus(404))
+        .catch(err => next(err));
+}
 
 function createNews(req, res, next) {
     newsService.create(req.body)
@@ -19,7 +40,8 @@ function createNews(req, res, next) {
 }
 
 function getAll(req, res, next) {
-    newsService.getAll()
+    console.log(req.params.id);
+    newsService.getAll(req.params.id)
         .then(allNews => res.json(allNews))
         .catch(err => next(err));
 }

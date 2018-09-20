@@ -5,6 +5,9 @@ const db = require('_helpers/db');
 const News = db.News;
 
 module.exports = {
+    searchByTitle,
+    searchByAuthor,
+    searchByNewsTags,
     getAll,
     getById,
     create,
@@ -12,8 +15,20 @@ module.exports = {
     delete: _delete
 };
 
-async function getAll() {
-    return await News.find().select('-hash');
+async function searchByTitle(title) {
+    return await News.findOne({ "title": title });
+}
+
+async function searchByAuthor(author) {
+    return await News.find({ "author": author });
+}
+
+async function searchByNewsTags(tags) {
+    return await News.find({ "newsTags": tags });
+}
+
+async function getAll(page) {
+    return await News.find().select('-hash').skip(3 * page).limit(3);
 }
 
 async function getById(id) {

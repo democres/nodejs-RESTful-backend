@@ -12,7 +12,10 @@ function jwt() {
             '/users/authenticate',
             '/users/register',
             '/tags/createTag',
-            '/news/createNews'
+            '/news/createNews',
+            '/news/searchByTitle',
+            '/news/searchByAuthor',
+            '/news/searchByNewsTags'
         ]
     });
 }
