@@ -1,0 +1,4 @@
+{
+    "connectionString": "mongodb://david:David123@ds163382.mlab.com:63382/davidtestdb",
+    "secret": "AREA51"
+}
