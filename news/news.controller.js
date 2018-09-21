@@ -9,7 +9,7 @@ router.post('/searchByNewsTags', searchByNewsTags);
 router.post('/createNews', createNews);
 router.get('/:id', getAll);
 router.get('/current', getCurrent);
-router.get('/:id', getById);
+router.get('/getById/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 
