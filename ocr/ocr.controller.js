@@ -19,9 +19,11 @@ function createNewTag(req, res, next) {
 }
 
 function getAll(req, res, next) {
-    ocrService.getAll()
-        .then(results => res.json(results))
-        .catch(err => next(err));
+
+    postCodeCheck(function (result) {
+        res.json(result);
+    });
+
 }
 
 function getCurrent(req, res, next) {
