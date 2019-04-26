@@ -20,7 +20,7 @@ function createNewTag(req, res, next) {
 
 function getAll(req, res, next) {
 
-    postCodeCheck(function (result) {
+    ocrService.getAll(function (result) {
         res.json(result);
     });
 
