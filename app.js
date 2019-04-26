@@ -17,6 +17,7 @@ app.use(cors());
 app.use('/users', require('./users/users.controller'));
 app.use('/tags', require('./tags/tags.controller'));
 app.use('/news', require('./news/news.controller'));
+app.use('/ocr', require('./ocr/ocr.controller'));
 
 // global error handler
 app.use(errorHandler);
