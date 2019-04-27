@@ -21,7 +21,7 @@ function createNewTag(req, res, next) {
 function getAll(req, res, next) {
 
     ocrService.getAll(function (result) {
-        res.json(JSON.stringify(result));
+        res.json(result);
     });
 
 }

@@ -18,7 +18,7 @@ function getAll(callback) {
 
     
 
-    https.get('https://LialSystems-Expense-Report:de4rrWGWW716XNgWPrOwisjQ@cloud-westus.ocrsdk.com/getTaskStatus?taskId=17e3aa6c-c95b-4c6f-ac80-56f229491b21', (resp) => {
+    https.get('https://jsonplaceholder.typicode.com/todos/1', (resp) => {
             
                 let data = '';
                 // A chunk of data has been recieved.
