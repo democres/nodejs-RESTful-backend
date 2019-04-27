@@ -15,7 +15,28 @@ module.exports = {
 
 function getAll(taskId,callback) {
 
-    https.get('https://LialSystems-Expense-Report:de4rrWGWW716XNgWPrOwisjQ@cloud-westus.ocrsdk.com/getTaskStatus?taskId='+taskId, (resp) => {
+    https.get('https://ExpenseReport3:Kcl3bz4571R+ivqQVlFEjxK6@cloud-westus.ocrsdk.com/getTaskStatus?taskId='+taskId, (resp) => {
+            
+                let data = '';
+                // A chunk of data has been recieved.
+            resp.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            // The whole response has been received. Print out the result.
+            resp.on('end', () => {
+                console.log(data);
+                callback(data);
+            });
+            }).on("error", (err) => {
+                console.log("Error: " + err.message);
+            });
+
+}
+
+function getResults(resultUrl,callback) {
+
+    https.get(resultUrl, (resp) => {
             
                 let data = '';
                 // A chunk of data has been recieved.

@@ -4,6 +4,7 @@ const ocrService = require('./ocr.service');
 
 // routes
 router.get('/:taskId', getAll);
+router.get('/results/:resultUrl', getResults);
 
 module.exports = router;
 
@@ -16,10 +17,11 @@ function getAll(req, res, next) {
 
 }
 
-function getCurrent(req, res, next) {
-    ocrService.getById(req.tag.sub)
-        .then(tag => tag ? res.json(tag) : res.sendStatus(404))
-        .catch(err => next(err));
+function getResults(req, res, next) {
+    ocrService.getResults(req.params.resultUrl, function (result) {
+        console.log(req.params.resultUrl);
+        res.json(result);
+    });
 }
 
 function getById(req, res, next) {
