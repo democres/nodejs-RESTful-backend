@@ -7,15 +7,10 @@ router.get('/:taskId', getAll);
 
 module.exports = router;
 
-function createNewTag(req, res, next) {
-    ocrService.create(req.body)
-        .then(() => res.sendStatus(201))
-        .catch(err => next(err));
-}
-
 function getAll(req, res, next) {
 
-    ocrService.getAll(req.params.id, function (result) {
+    ocrService.getAll(req.params.taskId, function (result) {
+        console.log(req.params.taskId);
         res.json(result);
     });
 
