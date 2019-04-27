@@ -3,12 +3,7 @@ const router = express.Router();
 const ocrService = require('./ocr.service');
 
 // routes
-router.post('/createTag', createNewTag);
-router.get('/', getAll);
-router.get('/current', getCurrent);
-router.get('/:id', getById);
-router.put('/:id', update);
-router.delete('/:id', _delete);
+router.get('/:taskId', getAll);
 
 module.exports = router;
 
@@ -20,7 +15,7 @@ function createNewTag(req, res, next) {
 
 function getAll(req, res, next) {
 
-    ocrService.getAll(function (result) {
+    ocrService.getAll(req.params.id, function (result) {
         res.json(result);
     });
 

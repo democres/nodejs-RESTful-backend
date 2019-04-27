@@ -13,12 +13,9 @@ module.exports = {
     delete: _delete
 };
 
-function getAll(callback) {
-    
+function getAll(taskId,callback) {
 
-    
-
-    https.get('https://jsonplaceholder.typicode.com/todos/1', (resp) => {
+    https.get('https://LialSystems-Expense-Report:de4rrWGWW716XNgWPrOwisjQ@cloud-westus.ocrsdk.com/getTaskStatus?taskId='+taskId, (resp) => {
             
                 let data = '';
                 // A chunk of data has been recieved.
