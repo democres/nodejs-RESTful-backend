@@ -18,7 +18,7 @@ function getAll(callback) {
 
     
 
-    https.get('https://jsonplaceholder.typicode.com/todos/1', (resp) => {
+    https.get('http://LialSystems-Expense-Report:de4rrWGWW716XNgWPrOwisjQ@cloud-westus.ocrsdk.com/getTaskStatus?taskId=1223', (resp) => {
             
                 let data = '';
                 // A chunk of data has been recieved.
