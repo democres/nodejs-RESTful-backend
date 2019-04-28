@@ -24,20 +24,4 @@ function getResults(req, res, next) {
     });
 }
 
-function getById(req, res, next) {
-    ocrService.getById(req.params.id)
-        .then(tag => tag ? res.json(tag) : res.sendStatus(404))
-        .catch(err => next(err));
-}
 
-function update(req, res, next) {
-    ocrService.update(req.params.id, req.body)
-        .then(() => res.json({}))
-        .catch(err => next(err));
-}
-
-function _delete(req, res, next) {
-    ocrService.delete(req.params.id)
-        .then(() => res.json({}))
-        .catch(err => next(err));
-}
