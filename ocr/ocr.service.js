@@ -15,7 +15,7 @@ module.exports = {
 
 function getAll(taskId,callback) {
 
-    https.get('https://ExpenseReportDev:nye3E/8A0GG1Tt71Wsc/+DNy    @cloud-westus.ocrsdk.com/getTaskStatus?taskId='+taskId, (resp) => {
+    https.get('https://ExpenseReportDev:nye3E/8A0GG1Tt71Wsc/+DNy@cloud-westus.ocrsdk.com/getTaskStatus?taskId='+taskId, (resp) => {
             
                 let data = '';
                 // A chunk of data has been recieved.
